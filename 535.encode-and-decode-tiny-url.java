@@ -1,0 +1,41 @@
+/*
+ * @lc app=leetcode id=535 lang=java
+ *
+ * [535] Encode and Decode TinyURL
+ */
+
+// @lc code=start
+public class Codec {
+
+    // solution one, use the simple number represent the short link
+    // Map<Integer, String> map = new HashMap<>();
+    // int i = 0;
+
+    // public String encode(String longUrl) {
+    // map.put(i, longUrl);
+    // return "http://tinyurl.com/" + i++;
+    // }
+
+    // public String decode(String shortUrl) {
+    // return map.get(Integer.parseInt(shortUrl.replace("http://tinyurl.com/",
+    // "")));
+
+    // }
+
+    // solution two, use the hash code represent the short link
+    Map<Integer, String> map = new HashMap<>();
+
+    public String encode(String longUrl) {
+        map.put(longUrl.hashCode(), longUrl);
+        return "http://tinyurl.com/" + longUrl.hashCode();
+    }
+
+    public String decode(String shortUrl) {
+        return map.get(Integer.parseInt(shortUrl.replace("http://tinyurl.com/", "")));
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(url));
+// @lc code=end
