@@ -19,7 +19,7 @@ public class Solution extends GuessGame {
         int high = n;
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            int result = guess(mid);
+            int result = guessNumber(mid);
             if (result == 0) {
                 return mid;
             } else if (result == 1) {
